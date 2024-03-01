@@ -1,0 +1,28 @@
+
+
+.Cadastro-formulario{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.Cadastro-linha{
+    display: flex;
+    flex-direction: row;
+
+    margin: 10px;
+    height: 25px;
+    width: 300px;
+
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.Cadastro-formulario>button{
+    align-items: center;
+    width: 100px;
+}
