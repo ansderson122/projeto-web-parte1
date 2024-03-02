@@ -72,7 +72,7 @@ function App() {
                     {
                       (namePath === '/principal')?(
                       <div>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className='Menu-busca'>
                           <input type='text' placeholder="Busca ..."></input>
                           <button type="submit" className="busca">
                             <FaSearch />

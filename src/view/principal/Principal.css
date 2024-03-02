@@ -1,0 +1,34 @@
+
+
+.Lista-capas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+}
+
+.Lista-capas>img{
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+    margin: 10px;
+
+    transition: transform 0.3s ease 
+}
+
+
+.Lista-capas>img:hover{
+    transform: scale(1.2) ;
+}
+
+.Grupo>h1{
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .Lista-capas>img{
+        margin: 5px;
+    }
+   
+}
