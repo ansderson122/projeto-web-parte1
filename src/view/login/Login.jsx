@@ -24,17 +24,17 @@ const Login = (prop)=>{
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(senhaUsuario === ""){
+        if(!validarEmail(emailUsuario)){ 
+           setErro("Digite um endereço de e-mail válido")
+        }else if (senhaUsuario === "") {
             setErro("Digite a senha")
-        }else if (!validarEmail(emailUsuario)) {
-            setErro("Digite um endereço de e-mail válido")
         } else {
             setFormularioEnviado(true)
         }
     };
 
     if (formularioEnviado) {
-        return <Navigate to="/" />;
+        return <Navigate to="/principal" />;
     }
 
     return (

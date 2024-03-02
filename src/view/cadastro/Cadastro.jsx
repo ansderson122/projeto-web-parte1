@@ -41,7 +41,7 @@ const Cadastro = (prop)=>{
     };
 
     if (formularioEnviado) {
-        return <Navigate to="/" />;
+        return <Navigate to="/principal" />;
     }
 
 

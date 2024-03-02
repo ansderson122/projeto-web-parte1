@@ -8,10 +8,14 @@ import {
   Routes,
 } from "react-router-dom";
 
+import { FaSearch } from 'react-icons/fa';
+import { TiArrowBack } from "react-icons/ti";
+
 
 import Sobre from './sobre/Sobre'
 import Cadastro from './cadastro/Cadastro';
 import Login from './login/Login';
+import Principal from './principal/Principal'
 
 
 
@@ -21,6 +25,10 @@ function App() {
 
   const autualizaPath = (novoPath)=>{
     setnamePath(novoPath)
+  }
+
+  const handleSubmit = () => {
+
   }
   
 
@@ -51,7 +59,7 @@ function App() {
                       (namePath === '/cadastro')?(
                         <>
                           <li>
-                            <Link to="/sobre" className='App-nav-item quadro vermelho'>Sobre</Link>
+                            <Link to="/sobre" className='App-nav-item quadro vermelho'><TiArrowBack className='voltar'/></Link>
                           </li> 
                           <li>
                             <Link to="/login" className='App-nav-item quadro azul'>Login</Link>
@@ -59,6 +67,19 @@ function App() {
 
                       </>
                     ):(<></>)
+                    }
+
+                    {
+                      (namePath === '/principal')?(
+                      <div>
+                        <form onSubmit={handleSubmit}>
+                          <input type='text' placeholder="Busca ..."></input>
+                          <button type="submit" className="busca">
+                            <FaSearch />
+                          </button>
+                        </form>
+                      </div>
+                      ):(<></>)
                     }
                     
                   </ul>
@@ -74,8 +95,9 @@ function App() {
                 <Route path="/sobre" element={<Sobre novoPath = {autualizaPath} />} />
                 <Route path="/cadastro" element={<Cadastro novoPath = {autualizaPath} />} />
                 <Route path="/login" element={<Login novoPath = {autualizaPath} />} />
+                <Route path="/principal" element={<Principal novoPath = {autualizaPath} />} />
 
-                <Route render={() => <h1>404: page not found</h1>} />
+                <Route path="*" element={<h1>404: Página não encontrada</h1>}/>
               </Routes>
             </div>
       </Router>
