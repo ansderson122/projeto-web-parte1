@@ -32,11 +32,11 @@ O Anime Streamer é um projeto React que visa proporcionar uma experiência envo
 ```bash
   git clone https://github.com/ansderson122/projeto-web-parte1.git
 ```
-1. Navegue até o diretório do projeto: 
+2. Navegue até o diretório do projeto: 
 ```bash
   cd projeto-web-parte1
 ```
-1. Instale as dependências: 
+3. Instale as dependências: 
 ```bash
   npm install
 ```
