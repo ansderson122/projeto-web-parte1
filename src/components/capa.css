@@ -1,0 +1,15 @@
+
+.capa-anime>img{
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+    margin: 10px;
+
+    transition: transform 0.3s ease 
+}
+
+
+.capa-anime>img:hover{
+    transform: scale(1.2) ;
+}
+

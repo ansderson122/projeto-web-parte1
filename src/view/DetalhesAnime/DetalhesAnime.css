@@ -1,0 +1,101 @@
+
+
+.Apresentacao-anime{
+    display: flex;
+    margin-top: 50px;
+}
+
+.Apresentacao-anime>*{
+    margin: 20px;
+}
+
+.Apresentacao-anime>img{
+    width: 300px;
+}
+
+.conteudo>p{
+    text-align: justify;
+}
+
+.lista-conteiner{
+    display: flex;
+    justify-content: space-around;
+
+    background-color: rgba(201, 200, 198, 0.349);
+}
+
+.lista-episodios{
+    text-align: left;
+    border: 1px solid black;
+    width: 400px;
+
+    margin: 20px;
+}
+
+.lista-episodios>ul{
+    width: 100%;
+}
+
+.lista-episodios>h3{
+    margin: 20px;
+}
+
+.episodio{ 
+    margin: 10px;
+}
+
+.episodio>a:hover{
+    background-color: rgb(219, 218, 217);
+    opacity: 0.8;
+}
+
+
+.episodio>a{   
+    display: grid;
+    place-items: center;
+
+    width: 50%;
+    height: 40px;
+}
+
+
+
+@media (max-width: 600px) {
+    .Apresentacao-anime>img{
+        width: 70vw; 
+    }
+
+    .lista-episodios{
+        width: 70vw;
+    }
+
+    .App-nav-item.quadro.vermelho{
+        width: 50px;
+
+        margin-top: 20px;
+        margin-left: auto;
+    
+    }
+
+}
+
+@media (max-width: 800px) {
+    .Apresentacao-anime>img{
+        width: 40vw; 
+    }
+
+    .Apresentacao-anime{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lista-conteiner{
+        flex-direction: column;
+        width: 80vw;
+        align-items: center;
+    }
+
+
+}
+  
+  

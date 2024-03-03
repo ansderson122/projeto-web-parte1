@@ -1,55 +1,18 @@
-import React , {useState , useEffect} from "react";
-import {useLocation,Navigate } from "react-router-dom";
+import React , { useEffect} from "react";
+import {useLocation } from "react-router-dom";
 
 
-import animes from './dados'
 import './Principal.css'
-
-
-// Para carrega as imgems  
-const importImages = require.context('./Capas', false, /\.(png|jpe?g|svg)$/);
-
-const imagens = {};
-
-importImages.keys().forEach((filename) => {
-  const nomeDaImagem = filename.replace('./', '');
-  imagens[nomeDaImagem] = importImages(filename);
-});
+import Capa from "../../components/capa";
 
 
 const Login = (prop)=>{
     const {pathname } = useLocation()
+ 
+    const Destaques = [ 16, 5, 11, 4, 15, 2, 13, 7, 9 ]
+    const assistidos = [ 13, 5, 4, 2, 7, 10, 12, 14, 9 ]
+    const Assistatambem = [13,18,12,6,19,1,17,3,16,7,8,11,10,15,14,4,9,20,5,2]
 
-
-    const card = (item)=>{ 
-        return (
-                <img src= {imagens[item.img]} alt="" srcset="" />
-        )
-    }
-
-    const gerarNumerosAleatorio = (quantidade, min, max) => {
-        if (quantidade > max - min + 1 || max < min) {
-          console.error("Impossível sortear a quantidade desejada dentro do intervalo fornecido.");
-          return null;
-        }
-      
-        const numerosDisponiveis = Array.from({ length: max - min + 1 }, (_, index) => index + min);
-        const numerosSorteados = [];
-      
-        for (let i = 0; i < quantidade; i++) {
-          const indiceSorteado = Math.floor(Math.random() * numerosDisponiveis.length);
-          const numeroSorteado = numerosDisponiveis.splice(indiceSorteado, 1)[0];
-          numerosSorteados.push(numeroSorteado);
-        }
-      
-        return numerosSorteados;
-      };
-      
-      const arrayAleatorio = (quantidade) => {
-        const indicesSorteados = gerarNumerosAleatorio(quantidade, 0, 20);
-        return indicesSorteados.map((indice) => animes[indice]);
-      };
-   
 
     useEffect(()=>{
             prop.novoPath(pathname)
@@ -63,7 +26,7 @@ const Login = (prop)=>{
                 <hr />
                 <div className="Lista-capas ">
                     {
-                        arrayAleatorio(9).map((item)=>card(item))
+                        Destaques.map((index)=>Capa(index))
                     }
                 </div>
             </div>
@@ -74,7 +37,7 @@ const Login = (prop)=>{
                 <hr />
                 <div className="Lista-capas ">
                     {
-                        arrayAleatorio(9).map((item)=>card(item))
+                        assistidos.map((index)=>Capa(index))
                     }
                 </div>
             </div>
@@ -84,7 +47,7 @@ const Login = (prop)=>{
                 <hr />
                 <div className="Lista-capas ">
                     {
-                        arrayAleatorio(20).map((item)=>card(item))
+                        Assistatambem.map((index)=>Capa(index))
                     }
                 </div>
             </div>

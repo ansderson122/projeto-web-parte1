@@ -13,6 +13,10 @@
   flex-direction: column;
 }
 
+ul{
+  list-style: none;
+}
+
 
 /*#######               Estilo dos formulario              ######*/
 .formulario{
@@ -115,6 +119,15 @@
   background-color: rgba(77, 77, 240, 0.884);
   color: white;
 }
+
+.App-nav-item.quadro.vermelho,.App-nav-item.quadro.azul{
+  display: grid;
+  place-content: center;
+  height: 10px;
+  border-radius: 5px;
+}
+
+
 
 @media (max-width: 600px) {
   .navigation{

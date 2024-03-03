@@ -16,12 +16,13 @@ import Sobre from './sobre/Sobre'
 import Cadastro from './cadastro/Cadastro';
 import Login from './login/Login';
 import Principal from './principal/Principal'
+import DetalhesAnime from './DetalhesAnime/DetalhesAnime';
 
 
 
 function App() {
 
-  const [namePath,setnamePath] = useState(null)
+  const [namePath,setnamePath] = useState("")
 
   const autualizaPath = (novoPath)=>{
     setnamePath(novoPath)
@@ -69,8 +70,23 @@ function App() {
                     ):(<></>)
                     }
 
+                    
+{
+                      (namePath === '/login')?(
+                        <>
+                          <li>
+                            <Link to="/sobre" className='App-nav-item quadro vermelho'><TiArrowBack className='voltar'/></Link>
+                          </li> 
+                          <li>
+                            <Link to="/cadastro" className='App-nav-item quadro azul'>Cadastro</Link>
+                          </li> 
+
+                      </>
+                    ):(<></>)
+                    }
+
                     {
-                      (namePath === '/principal')?(
+                      (namePath.startsWith('/principal'))?(
                       <div>
                         <form onSubmit={handleSubmit} className='Menu-busca'>
                           <input type='text' placeholder="Busca ..."></input>
@@ -80,6 +96,19 @@ function App() {
                         </form>
                       </div>
                       ):(<></>)
+                    }
+                    
+
+                    {
+
+                      (namePath.startsWith('/principal') && namePath!='/principal' )?(
+                        <div>
+                          <li>
+                            <Link to="/principal" className='App-nav-item quadro vermelho'><TiArrowBack className='voltar'/></Link>
+                          </li> 
+                        </div>
+                        ):(<></>)
+
                     }
                     
                   </ul>
@@ -96,6 +125,7 @@ function App() {
                 <Route path="/cadastro" element={<Cadastro novoPath = {autualizaPath} />} />
                 <Route path="/login" element={<Login novoPath = {autualizaPath} />} />
                 <Route path="/principal" element={<Principal novoPath = {autualizaPath} />} />
+                <Route path="/principal/:nome" element={<DetalhesAnime novoPath = {autualizaPath} />} />
 
                 <Route path="*" element={<h1>404: Página não encontrada</h1>}/>
               </Routes>
