@@ -19,7 +19,6 @@ import Principal from './principal/Principal'
 import DetalhesAnime from './DetalhesAnime/DetalhesAnime';
 
 
-
 function App() {
 
   const [namePath,setnamePath] = useState("")
@@ -126,6 +125,7 @@ function App() {
                 <Route path="/login" element={<Login novoPath = {autualizaPath} />} />
                 <Route path="/principal" element={<Principal novoPath = {autualizaPath} />} />
                 <Route path="/principal/:nome" element={<DetalhesAnime novoPath = {autualizaPath} />} />
+
 
                 <Route path="*" element={<h1>404: Página não encontrada</h1>}/>
               </Routes>

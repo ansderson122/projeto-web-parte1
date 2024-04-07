@@ -1,15 +1,16 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-
 const AnimesContext = createContext();
 
 export const useAnimes = () => useContext(AnimesContext);
 
 export const AnimesProvider = ({ children }) => {
   const [animes, setAnimes] = useState([]);
+  const [erro, setErro] = useState(null);
+
 
   useEffect(() => { 
     const dados = [];
-    fetch('http://localhost:3000/animes')
+    fetch('http://localhost:3001/animes')
       .then(response => response.json())
       .then(novosAnimes => {
         novosAnimes.forEach(novoAnime => {
@@ -19,11 +20,13 @@ export const AnimesProvider = ({ children }) => {
           }
         });
       }).then(()=>setAnimes(dados))
-      .catch(error => console.error('Erro ao obter a lista de animes:', error));
+      .catch(error =>{ 
+        setErro(error.message);
+        console.error('Erro ao obter a lista de animes:', error)});
   }, []);
 
   return (
-    <AnimesContext.Provider value={animes}>
+    <AnimesContext.Provider value={{animes,erro}}>
       {children}
     </AnimesContext.Provider>
   );

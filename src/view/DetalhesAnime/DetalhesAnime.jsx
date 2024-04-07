@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from "react";
+import React from "react";
 import {useLocation } from "react-router-dom";
 import { useAnimes } from '../../animesContext';
   
@@ -6,14 +6,18 @@ import './DetalhesAnime.css'
 
 const DetalhesAnime = (prop)=>{
     const {pathname } = useLocation()
-    const animes = useAnimes();
+    const {animes,erro} = useAnimes();
+    
+    prop.novoPath(pathname)
+    if (erro || animes.length === 0) {
+        return <h1 className="textRed">Erro no servido</h1>;
+    }
+
     const numeroAnime = pathname.split('/')[2]
     const anime = animes[numeroAnime]
     const episodiosLen = Array.from({ length: anime['Legendado-episodios'] }, (_, index) => index + 1);
     const episodiosDub = Array.from({ length: anime['Dublado-episodios'] }, (_, index) => index + 1);
 
-    prop.novoPath(pathname)
-   
     return (
         <div className="Anime conteiner">
             <div className="Apresentacao-anime">

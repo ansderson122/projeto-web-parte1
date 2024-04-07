@@ -21,7 +21,7 @@ const Login = (prop)=>{
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if(!validarEmail(emailUsuario)){ 
@@ -29,7 +29,27 @@ const Login = (prop)=>{
         }else if (senhaUsuario === "") {
             setErro("Digite a senha")
         } else {
-            setFormularioEnviado(true)
+            try {
+                const response = await fetch('http://localhost:3001/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: emailUsuario,
+                        senha: senhaUsuario
+                })})
+                
+                if (!response.ok) {
+                    throw new Error('Credenciais inválidas. Por favor, tente novamente.');
+                }
+            
+                console.log('Login bem-sucedido');
+                setFormularioEnviado(true)
+            } catch (error) {
+                console.error('Erro ao fazer login:', error.message);
+                setErro(error.message)
+            }
         }
     };
 

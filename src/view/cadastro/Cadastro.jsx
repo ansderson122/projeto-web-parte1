@@ -1,6 +1,5 @@
 import React , {useState , useEffect} from "react";
 import {useLocation,Navigate } from "react-router-dom";
-  
 import './Cadastro.css'
 
 
@@ -24,7 +23,7 @@ const Cadastro = (prop)=>{
         return regexEmail.test(email)
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if(nomeUsuario === "" ||  sobrenomeUsuario === ""){
@@ -36,8 +35,35 @@ const Cadastro = (prop)=>{
         else if (senhaUsuario !== repetirSenha) {
           setErro("As senhas não coincidem")
         } else {
-            setFormularioEnviado(true)
+            try {
+            const response = await fetch('http://localhost:3001/usuarios', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                nome: nomeUsuario,
+                sobrenome: sobrenomeUsuario,
+                email: emailUsuario,
+                senha: senhaUsuario
+              })
+            });
+      
+            if (response.ok) {
+              const data = await response.json();
+              console.log(data.message);
+              setFormularioEnviado(true)
+            } else {
+              console.error('Erro ao cadastrar usuário:', response.statusText);
+              setErro(response.statusText)
+            }
+            } catch (error) {
+            console.error('Erro ao cadastrar usuário:', error.message);
+            setErro(error)
+            }
         }
+
+        
     };
 
     if (formularioEnviado) {
