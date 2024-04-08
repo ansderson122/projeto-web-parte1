@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link,
   Routes,
@@ -17,6 +16,7 @@ import Cadastro from './cadastro/Cadastro';
 import Login from './login/Login';
 import Principal from './principal/Principal'
 import DetalhesAnime from './DetalhesAnime/DetalhesAnime';
+import TodosAnimes from './todosAnimes/todosAnimes'
 
 
 function App() {
@@ -125,6 +125,7 @@ function App() {
                 <Route path="/login" element={<Login novoPath = {autualizaPath} />} />
                 <Route path="/principal" element={<Principal novoPath = {autualizaPath} />} />
                 <Route path="/principal/:nome" element={<DetalhesAnime novoPath = {autualizaPath} />} />
+                <Route path="/todosAnimes" element={<TodosAnimes novoPath = {autualizaPath} />} />
 
 
                 <Route path="*" element={<h1>404: Página não encontrada</h1>}/>

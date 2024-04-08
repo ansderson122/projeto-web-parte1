@@ -18,3 +18,12 @@
     }
    
 }
+
+.paraTodosAnimes{
+    height: 50px;
+    width:200px;
+    border-radius: 15px;
+    background-color: rgba(77, 77, 240, 0.884);
+    margin-bottom: 100px;
+    margin-left: 30%;
+}
